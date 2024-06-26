@@ -14,7 +14,7 @@ owner_id = 123456789  # Ganti dengan ID Telegram Anda
 app = Client("jackpot_bot", bot_token=bot_token)
 
 # Koneksi ke MongoDB
-mongo_client = MongoClient('mongodb://localhost:27017/')
+mongo_client = MongoClient('mongodb+srv://Kahn:bL4i1euCEnsxWuDA@cluster0yes.sr87aoe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0yes')
 db = mongo_client['jackpot_db']
 leaderboard_collection = db['leaderboard']
 
