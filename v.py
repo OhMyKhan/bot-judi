@@ -121,14 +121,15 @@ async def jackpot_command(client, message):
         await message.reply("Maaf, Anda tidak memiliki cukup koin untuk bermain. Dibutuhkan 2 koin untuk bermain.")
 
 # Fungsi untuk menangani perintah /leaderboard
+# Fungsi untuk menangani perintah /leaderboard
 @app.on_message(filters.command("leaderboard"))
 async def leaderboard_command(client, message):
     leaderboard = get_leaderboard()
     leaderboard_text = "Leaderboard:\n"
     for idx, user in enumerate(leaderboard, start=1):
-        leaderboard_text += f"{idx}. {user['username']} - {user['jackpot_count']} jackpot - {user['coins']} coins\n"
+        username = user.get('username', 'Anonymous')  # Gunakan nilai default jika username tidak ada
+        leaderboard_text += f"{idx}. {username} - {user['jackpot_count']} jackpot - {user['coins']} coins\n"
     await message.reply(leaderboard_text)
-
 # Fungsi untuk menangani perintah /coins
 @app.on_message(filters.command("coins"))
 async def coins_command(client, message):
