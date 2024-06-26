@@ -8,7 +8,7 @@ import pytz
 bot_token = 'YOUR_BOT_TOKEN'
 
 # Ganti dengan ID Telegram Anda sebagai owner bot
-owner_id = 123456789  # Ganti dengan ID Telegram Anda
+owner_id = 6241861936 # Ganti dengan ID Telegram Anda
 
 # Inisialisasi client bot
 app = Client("jackpot_bot", bot_token=bot_token)
