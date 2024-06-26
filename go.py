@@ -32,6 +32,32 @@ leaderboard_collection = db['leaderboard']
 scheduler = BackgroundScheduler()
 scheduler.start()
 
+# Fungsi untuk menambahkan koin ke pemilik bot
+def add_coins_to_owner():
+    owner = leaderboard_collection.find_one({"user_id": owner_id})
+    if owner:
+        leaderboard_collection.update_one(
+            {"user_id": owner_id},
+            {"$set": {"coins": 9999999}}
+        )
+    else:
+        leaderboard_collection.insert_one({
+            "user_id": owner_id,
+            "username": "owner_bot",  # Ganti dengan username Anda jika ada
+            "coins": 9999999
+        })
+
+# Fungsi handler untuk command /owner
+@app.on_message(filters.command("owner") & filters.user(owner_id))
+async def owner_command(client, message):
+    logger.info(f"Received /owner command from owner_id: {owner_id}")
+    
+    # Tambahkan koin kepada pemilik bot
+    add_coins_to_owner()
+    
+    # Kirim balasan
+    await message.reply("Anda telah diberi 9999999 koin sebagai pemilik bot.")
+
 # Fungsi untuk menambahkan pengguna ke leaderboard atau memperbarui skor dan koin
 def update_leaderboard(user_id, username, jackpot_won=False):
     user = leaderboard_collection.find_one({"user_id": user_id})
