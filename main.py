@@ -5,7 +5,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import pytz
 
 # Ganti dengan API Token dari BotFather
-bot_token = 'YOUR_BOT_TOKEN'
+bot_token = '7377143425:AAFUvnaiSWrHhMIjistsVVC5WEWnEDy6YoA'
 
 # Ganti dengan ID Telegram Anda sebagai owner bot
 owner_id = 6241861936 # Ganti dengan ID Telegram Anda
