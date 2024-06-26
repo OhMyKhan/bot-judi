@@ -3,6 +3,12 @@ import random
 from pymongo import MongoClient
 from apscheduler.schedulers.background import BackgroundScheduler
 import pytz
+import logging
+
+# Konfigurasi logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 # Ganti dengan API ID dan API Hash dari my.telegram.org
 api_id = '29256666'
@@ -149,4 +155,7 @@ def give_daily_coins():
 scheduler.add_job(give_daily_coins, 'cron', hour=12, timezone=pytz.timezone('Asia/Jakarta'))
 
 # Menjalankan bot
-app.run()
+if __name__ == "__main__":
+    print("Bot telah dimulai...")
+    logger.info("Bot telah dimulai...")
+    app.run()
